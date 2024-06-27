@@ -37,6 +37,17 @@ if (empty($order)) {
 
 $nav -> setRecordCount($hlData ::getCount()); //устанавливает количество записей для навигации
 
+//Фильтр для грида
+$arrFilt = ['PRESET_ID', 'FILTER_ID', 'FILTER_APPLIED', 'FIND']; //массив ненужных данных фильтра
+$filterOption = new Bitrix\Main\UI\Filter\Options('my_grid'); //получаем опции фильтра
+$filterData = $filterOption -> getFilter([]); //текущие значения фильтра
+$filterHLB = [];
+foreach ($filterData as $k => $v) {
+    if (!in_array($k, $arrFilt)) {
+        $filterHLB[] = [$k => $v]; // собираем фильтр
+    }
+}
+
 $reshlData = $hlData ::getList(
     [
         "select"      => [
@@ -45,6 +56,7 @@ $reshlData = $hlData ::getList(
             "UF_QUESTION_CREATOR",
         ],
         "order"       => $order,
+        "filter"       => $filterHLB,
         "count_total" => true, //заставляет ORM выполнить отдельный запрос COUNT
         "offset"      => $nav -> getOffset(), //возвращает позицию первой записи
         "limit"       => $nav -> getLimit(), //возвращает количество записей на странице
@@ -71,7 +83,23 @@ while ($arr = $reshlData -> Fetch()) {
     $arResult['GRID']["ROWS"][] = $elementRow;
 }
 
-//Для вывода грида на страницу, подключаем компонент main.ui.grid.
+//Для вывода фильтра на страницу, подключаем компонент main.ui.filter
+$APPLICATION->IncludeComponent(
+    'bitrix:main.ui.filter',
+    '',
+    [
+        'FILTER_ID' => 'my_grid',
+        'GRID_ID' => 'my_grid',
+        'FILTER' => [
+            ['id' => 'ID', 'name' => 'Номер вопроса', 'type' => 'string', 'default' => true],
+        ],
+        'ENABLE_LIVE_SEARCH' => true,
+        'ENABLE_LABEL' => true,
+        'DISABLE_SEARCH' => true,
+    ]
+);
+
+//Для вывода грида на страницу, подключаем компонент main.ui.grid
 $APPLICATION -> IncludeComponent(
     'bitrix:main.ui.grid',
     '',
