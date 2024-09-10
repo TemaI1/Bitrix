@@ -1,3 +1,8 @@
+Необходимо подключение:
+
+    jQuery
+    Bootstrap
+
 Нужно добавить hl-блок:
 
     QuestionsAnswers (id-1)
