@@ -216,6 +216,8 @@ while ($arr = $resHLQuestion -> Fetch()) {
 }
 ?>
 
+<a href="#" class="btn btn-secondary procument_btn mb-2" data-toggle="modal" data-target="#question-answer">Задать вопрос</a>
+
 <div class="procurement">
     <?
     //вызов компонента (фильтр)
@@ -347,6 +349,40 @@ while ($arr = $resHLQuestion -> Fetch()) {
 			<div class="modal-body">
 				<p id="history-question-text" class='mt-3' style="white-space: pre-wrap;"></p>
 			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="question-answer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content ">
+			<div class="modal-header">
+				<h5 class="text-center" >Создать вопрос</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form action="" method="post" id="question-answer-form">
+					<input type="text" value="<?=$uID?>" class="form-control" name="questionFioId" style="display: none">
+					<input type="text" value="<?=$fio?>" class="form-control" name="questionFioName" style="display: none">
+					<input type="text" value="<?=$date?>" class="form-control" name="questionDate" style="display: none">
+					<div class='mt-3'>Выберите раздел вашего вопроса</div>
+					<!--option value формируются из Highload-блок(ID значения списка)-->
+					<select name="questionName" class="form-control" required>
+						<option value="1">Разъяснения</option>
+						<option value="2">Особые</option>
+						<option value="3">Приложение</option>
+						<option value="4" selected>Иное</option>
+					</select>
+					<div class='mt-3'>Ваш вопрос</div>
+					<textarea rows="8" name="questionText" class="form-control" required></textarea>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary">Отправить</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть окно</button>
+			</div>
+			</form>
 		</div>
 	</div>
 </div>
