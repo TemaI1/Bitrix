@@ -317,7 +317,7 @@ while ($ob = $resElement -> Fetch()) {
 		console.log(deleteValue);
 		$.ajax({
 			method: "POST",
-			url: "/ajax/doc-data.php",
+			url: "/document-storage/doc-data.php",
 			data: {deleteDocValue: deleteValue, sectionId: sectionElem},
 			dataType: 'json',
 			success: function (response) {
@@ -345,7 +345,7 @@ while ($ob = $resElement -> Fetch()) {
 		let sectionName = $("#section-name").val();
 		$.ajax({
 			method: "POST",
-			url: "/ajax/doc-data.php",
+			url: "/document-storage/doc-data.php",
 			data: {sectionName: sectionName, sectionId: sectionElem},
 			dataType: 'json',
 			success: function (response) {
@@ -374,7 +374,7 @@ while ($ob = $resElement -> Fetch()) {
 
 		$.ajax({
 			method: "POST",
-			url: "/ajax/doc-data.php",
+			url: "/document-storage/doc-data.php",
 			data: formData,
 			processData: false,
 			contentType: false,
@@ -397,7 +397,7 @@ while ($ob = $resElement -> Fetch()) {
 		let searchName = $("#search-doc-name").val();
 		$.ajax({
 			method: "POST",
-			url: "/ajax/doc-data.php",
+			url: "/document-storage/doc-data.php",
 			data: {searchName: searchName},
 			dataType: 'json',
 			success: function(data) {
