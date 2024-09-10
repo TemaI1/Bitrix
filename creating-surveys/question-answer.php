@@ -370,10 +370,10 @@ while ($arr = $resHLQuestion -> Fetch()) {
 					<div class='mt-3'>Выберите раздел вашего вопроса</div>
 					<!--option value формируются из Highload-блок(ID значения списка)-->
 					<select name="questionName" class="form-control" required>
-						<option value="1">Разъяснения</option>
-						<option value="2">Особые</option>
-						<option value="3">Приложение</option>
-						<option value="4" selected>Иное</option>
+						<option value="6">Разъяснения</option>
+						<option value="7">Особые</option>
+						<option value="8">Приложение</option>
+						<option value="9" selected>Иное</option>
 					</select>
 					<div class='mt-3'>Ваш вопрос</div>
 					<textarea rows="8" name="questionText" class="form-control" required></textarea>
