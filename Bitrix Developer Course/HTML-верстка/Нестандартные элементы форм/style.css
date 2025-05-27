@@ -1,0 +1,25 @@
+.switch-container{
+    display: inline-block;
+    width: 100px;
+    height: 50px;
+    border-radius: 25px;
+    background: lightgrey;
+}
+
+.switch-control{
+    display: none;
+}
+
+.switch-toggle{
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+    background: white;
+}
+
+.switch-control:checked + .switch-container{
+    text-align: right;
+    background: rgb(110, 200, 110);
+}
