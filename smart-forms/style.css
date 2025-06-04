@@ -1,0 +1,154 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+textarea{
+    max-width: 300px;
+    max-height: 200px;
+}
+
+.all-content{
+    background-color: #ececec;
+    border-radius: 6px;
+    padding: 10px;
+    overflow-x: auto;
+}
+
+.all-content::-webkit-scrollbar{
+    width: 12px;
+    height: 12px;
+}
+
+.all-content::-webkit-scrollbar-thumb{
+    background-color: #2F6BA9;
+    border-radius: 6px;
+}
+
+.form-table{
+    min-width: 100%;
+}
+
+.form-table td{
+    border: 1px solid #808080;
+    border-radius: 3px;
+    padding: 5px 10px;
+}
+
+.main-point{
+    background-color: #808080;
+    /*background-color: #2F6BA9;*/
+    color: #FFFFFF;
+    font-size: 18px !important;
+    text-align: center;
+    padding: 5px 10px;
+}
+
+.box-btns-cell{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.box-btns-btn{
+    font-size: 14px;
+    font-family: sans-serif;
+    padding: 8px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.change-result-btn{
+    background-color: #2F6BA9;
+    color: #FFFFFF;
+}
+
+.change-result-btn-save{
+    background-color: #23a966;
+    color: #FFFFFF;
+}
+
+.change-result-btn-delete{
+    background-color: #a92323;
+    color: #FFFFFF;
+}
+
+.smart-input{
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: sans-serif;
+    padding: 5px;
+    border: 1px solid #808080;
+    margin: 10px 0;
+}
+
+.box-btns-form{
+    display: flex;
+    margin-top: 10px;
+}
+
+.form-btn{
+    background-color: #2F6BA9;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-family: sans-serif;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.add-solution-btn, .add-stages-btn{
+    background-color: #2F6BA9;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-family: sans-serif;
+    padding: 8px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.del-solution-btn-box, .del-stages-btn-box{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.del-solution-btn, .del-stages-btn{
+    padding: 5px 10px;
+    background-color: #a92323;
+    color: #a92323;
+    font-size: 14px;
+    font-family: sans-serif;
+    border: none;
+    border-radius: 2px 2px 2px 100%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.del-solution-btn:hover, .del-stages-btn:hover{
+    border-radius: 2px;
+    padding: 7px 14px;
+    color: #FFFFFF;
+}
+
+.notification{
+    position: fixed;
+    top: 10%;
+    right: 5%;
+    background-color: #808080;
+    font-size: 18px;
+    font-family: sans-serif;
+    color: #FFFFFF;
+    border-radius: 6px;
+    opacity: 0;
+    transition: 0.3s;
+    z-index: 100;
+}
+
+.notification-show{
+    opacity: 1;
+    padding: 20px 30px;
+}
