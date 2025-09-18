@@ -1,8 +1,6 @@
 <?php
 
-// Читаем первую строку из stdin
 $input1 = trim(fgets(STDIN));
-// Читаем вторую строку из stdin
 $input2 = trim(fgets(STDIN));
 
 if (!is_numeric($input1) || !is_numeric($input2)) {
