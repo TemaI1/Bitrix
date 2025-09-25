@@ -39,17 +39,15 @@ function getOperationNumber(array &$items, array $operations): int
     } while (true);
 }
 
-function operationActionAdd(): void
+function operationActionAdd(array &$items): void
 {
-    global $items;
     echo "Введение название товара для добавления в список: \n> ";
     $itemName = trim(fgets(STDIN));
     $items[] = $itemName;
 }
 
-function operationActionDelete(): void
+function operationActionDelete(array &$items): void
 {
-    global $items;
     echo 'Текущий список покупок:' . PHP_EOL;
     echo 'Список покупок: ' . PHP_EOL;
     echo implode("\n", $items) . "\n";
@@ -63,9 +61,8 @@ function operationActionDelete(): void
     }
 }
 
-function operationActionPrint(): void
+function operationActionPrint(array &$items): void
 {
-    global $items;
     echo 'Ваш список покупок: ' . PHP_EOL;
     echo implode(PHP_EOL, $items) . PHP_EOL;
     echo 'Всего ' . count($items) . ' позиций. ' . PHP_EOL;
@@ -80,15 +77,15 @@ do {
 
     switch ($operationNumber) {
         case OPERATION_ADD:
-            operationActionAdd();
+            operationActionAdd($items);
             break;
 
         case OPERATION_DELETE:
-            operationActionDelete();
+            operationActionDelete($items);
             break;
 
         case OPERATION_PRINT:
-            operationActionPrint();
+            operationActionPrint($items);
             break;
     }
 
