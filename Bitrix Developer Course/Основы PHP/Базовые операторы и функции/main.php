@@ -9,16 +9,29 @@ $lastName = trim(fgets(STDIN));
 echo "Введите ваше отчество: ";
 $middleName = trim(fgets(STDIN));
 
+// Функция для форматирования имени с первой заглавной буквой и остальными строчными
+function formatName($name) {
+    $name = mb_strtolower($name);
+    return mb_strtoupper(mb_substr($name, 0, 1)) . mb_substr($name, 1);
+}
+
+// Форматируем каждое слово
+$lastNameFormatted = formatName($lastName);
+$firstNameFormatted = formatName($firstName);
+$middleNameFormatted = formatName($middleName);
+
 // Полное имя
-$fullname = ucwords(mb_strtolower($lastName . ' ' . $firstName . ' ' . $middleName));
+$fullname = $lastNameFormatted . ' ' . $firstNameFormatted . ' ' . $middleNameFormatted;
 
-$fullnameWords = explode(' ', $fullname);
-
-// Аббревиатура
-$fio = $fullnameWords[0][0] . $fullnameWords[1][0] . $fullnameWords[2][0];
+// Инициалы с заглавной буквы
+$fio = mb_strtoupper(mb_substr($lastName, 0, 1)) .
+       mb_strtoupper(mb_substr($firstName, 0, 1)) .
+       mb_strtoupper(mb_substr($middleName, 0, 1));
 
 // Фамилия и инициалы
-$surnameAndInitials = $fullnameWords[0] . " " . $fullnameWords[1][0] . "." . $fullnameWords[2][0] . ". ";
+$surnameAndInitials = $lastNameFormatted . " " . 
+                      mb_strtoupper(mb_substr($firstName, 0, 1)) . "." . 
+                      mb_strtoupper(mb_substr($middleName, 0, 1)) . ".";
 
 echo "Полное имя: " . $fullname . "\n";
 
