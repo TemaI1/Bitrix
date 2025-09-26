@@ -20,6 +20,7 @@ function getOperationNumber(array &$items, array $operations): int
     do {
         echo 'Выберите операцию для выполнения: ' . PHP_EOL;
 
+        // Проверить, есть ли товары в списке? Если нет, то не отображать пункт про удаление товаров
         $displayOperations = $operations;
         if (empty($items)){
             unset($displayOperations[OPERATION_DELETE]);
@@ -53,6 +54,13 @@ function operationActionDelete(array &$items): void
     echo implode("\n", $items) . "\n";
     echo 'Введение название товара для удаления из списка:' . PHP_EOL . '> ';
     $itemName = trim(fgets(STDIN));
+
+    // Проверить, есть ли товары в списке? Если нет, то сказать об этом и попросить ввести другую операцию
+    if (!in_array($itemName, $items, true)) {
+        echo 'Такого товара в списке нет.' . PHP_EOL;
+        echo 'Выберите операцию для выполнения: ' . PHP_EOL;
+        return;
+    }
 
     $key = array_search($itemName, $items, true);
     while ($key !== false) {
