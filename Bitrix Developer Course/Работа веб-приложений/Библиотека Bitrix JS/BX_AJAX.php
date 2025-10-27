@@ -34,74 +34,74 @@ if(isset($_REQUEST['ajax_form']) && $_REQUEST['ajax_form'] == $sidAjax){
 <!-- скрип js -->
 <script>
     // устанавливаем переменную BXDEBUG в объекте window со значением true
-   window.BXDEBUG = true;
+    window.BXDEBUG = true;
 
-   // создаем функцию DEMOLoad
-function DEMOLoad(){
-    // скрываем элемент с id "block"
-    BX.hide(BX("block"));
-    // показываем элемент с id "process"
-    BX.show(BX("process"));
-    // загружаем json-объект из заданного url и передаем его обработчику callback
-    BX.ajax.loadJSON(
-        '<?=$APPLICATION->GetCurPage()?>?ajax_form=<?=$sidAjax?>',
-        DEMOResponse
-    );
-}
+    // создаем функцию DEMOLoad
+    function DEMOLoad(){
+        // скрываем элемент с id "block"
+        BX.hide(BX("block"));
+        // показываем элемент с id "process"
+        BX.show(BX("process"));
+        // загружаем json-объект из заданного url и передаем его обработчику callback
+        BX.ajax.loadJSON(
+            '<?=$APPLICATION->GetCurPage()?>?ajax_form=<?=$sidAjax?>',
+            DEMOResponse
+        );
+    }
 
-// создаем функцию DEMOResponse c передачей параметра
-function DEMOResponse (data){
-    // выводим данные ответа
-    BX.debug('AJAX-DEMOResponse ', data);
-    // обновляем содержимое блока с id "block"
-    BX("block").innerHTML = data.RESULT;
-    // показываем элемент с id "block"
-    BX.show(BX("block"));
-    // скрываем элемент с id "process"
-    BX.hide(BX("process"));
+    // создаем функцию DEMOResponse c передачей параметра
+    function DEMOResponse (data){
+        // выводим данные ответа
+        BX.debug('AJAX-DEMOResponse ', data);
+        // обновляем содержимое блока с id "block"
+        BX("block").innerHTML = data.RESULT;
+        // показываем элемент с id "block"
+        BX.show(BX("block"));
+        // скрываем элемент с id "process"
+        BX.hide(BX("process"));
 
-    // вызываем пользовательское событие 'DEMOUpdate' на элементе с id "block"
-    BX.onCustomEvent(
-        BX(BX("block")),
-        'DEMOUpdate'
-    );
-}
+        // вызываем пользовательское событие 'DEMOUpdate' на элементе с id "block"
+        BX.onCustomEvent(
+            BX(BX("block")),
+            'DEMOUpdate'
+        );
+    }
 
-// выполнение скрипта только после полной подготовки страницы
-BX.ready(function(){
+    // выполнение скрипта только после полной подготовки страницы
+    BX.ready(function(){
 
-    // добавления обработчика события 'DEMOUpdate' на элемент с id "block" (перезагружаем страницу при срабатывании события)
-    /*
-    BX.addCustomEvent(BX("block"), 'DEMOUpdate', function(){
-        window.location.href = window.location.href;
-    });
-    */
+        // добавления обработчика события 'DEMOUpdate' на элемент с id "block" (перезагружаем страницу при срабатывании события)
+        /*
+        BX.addCustomEvent(BX("block"), 'DEMOUpdate', function(){
+            window.location.href = window.location.href;
+        });
+        */
 
-    // скрываем элемент с id "block"
-    BX.hide(BX("block"));
-    // скрываем элемент с id "process"
-    BX.hide(BX("process"));
+        // скрываем элемент с id "block"
+        BX.hide(BX("block"));
+        // скрываем элемент с id "process"
+        BX.hide(BX("process"));
 
-    // устанавливаем обработчик события "click" на дочерние элементы "document.body" с классом "css_ajax"
-    BX.bindDelegate(
-        document.body, 'click', {className: 'css_ajax' },
-        function(e){
+        // устанавливаем обработчик события "click" на дочерние элементы "document.body" с классом "css_ajax"
+        BX.bindDelegate(
+            document.body, 'click', {className: 'css_ajax' },
+            function(e){
 
-            // создаем условие, если событие не передано
-            if(!e){
-                // присваиваем значение глобального события
-                e = window.event;
+                // создаем условие, если событие не передано
+                if(!e){
+                    // присваиваем значение глобального события
+                    e = window.event;
+                }
+
+                // вызываем функцию DEMOLoad
+                DEMOLoad();
+
+                // отменяем действие по умолчанию для элемента
+                return BX.PreventDefault(e);
             }
-
-            // вызываем функцию DEMOLoad
-            DEMOLoad();
-
-            // отменяем действие по умолчанию для элемента
-            return BX.PreventDefault(e);
-        }
-    );
-   
-});
+        );
+    
+    });
 
 </script>
 
