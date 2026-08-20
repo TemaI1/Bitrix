@@ -1,0 +1,377 @@
+.content {
+    margin: 5px 10px;
+}
+
+.content-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #e3e3e3;
+    border-radius: 20px;
+    padding: 0 20px;
+}
+
+.btn-creation {
+    background-color: #5682b0;
+    color: #FFFFFF;
+    font-size: 19px;
+    font-family: sans-serif;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.btn-creation:hover {
+    background-color: #406184;
+}
+
+/* Фон модального окна */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+    animation: fadeIn 0.3s;
+    overflow-y: auto;
+}
+
+/* Контент модального окна */
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 700px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation: slideDown 0.3s;
+}
+
+/* Кнопка закрытия */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+    z-index: 1;
+}
+
+.close-btn:hover {
+    color: #000;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: 500;
+    display: block;
+}
+
+.form-group p {
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.form-group textarea {
+    min-height: 100px;
+}
+
+.btns-update {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.submit-btn {
+    width: 100%;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+    background-color: #5682b0;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-family: sans-serif;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #406184;
+}
+
+.submit-btn:disabled {
+    background-color: #999;
+    cursor: not-allowed;
+}
+
+/* Кнопка удаления записи */
+.delete-btn, .reject-btn {
+    width: 100%;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+    background-color: #d9534f;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-family: sans-serif;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.delete-btn:hover, .reject-btn:hover {
+    background-color: #c9302c;
+}
+
+.delete-btn:disabled {
+    background-color: #999;
+    cursor: not-allowed;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ========================================================================== */
+/* СПЛЫВАЮЩИЕ УВЕДОМЛЕНИЯ (TOAST)                                           */
+/* ========================================================================== */
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    pointer-events: none;
+}
+
+.toast {
+    min-width: 280px;
+    max-width: 400px;
+    padding: 14px 20px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 15px;
+    font-family: sans-serif;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: toastIn 0.3s ease-out;
+    pointer-events: auto;
+}
+
+.toast.toast-success {
+    background-color: #28a745;
+}
+
+.toast.toast-error {
+    background-color: #dc3545;
+}
+
+.toast.toast-info {
+    background-color: #17a2b8;
+}
+
+.toast.toast-icon {
+    font-size: 20px;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.toast.toast-hiding {
+    animation: toastOut 0.3s ease-in forwards;
+}
+
+@keyframes toastIn {
+    from {
+        transform: translateX(120%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes toastOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(120%);
+        opacity: 0;
+    }
+}
+
+/* ========================================================================== */
+/* КАСТОМНОЕ ОКНО ПОДТВЕРЖДЕНИЯ                                             */
+/* ========================================================================== */
+.confirm-overlay {
+    display: none;
+    position: fixed;
+    z-index: 99999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+}
+
+.confirm-box {
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 420px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: fadeIn 0.2s;
+}
+
+.confirm-title {
+    margin: 0 0 15px 0;
+    color: #333;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.confirm-message {
+    color: #555;
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+.confirm-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.confirm-btn {
+    padding: 10px 22px;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+    font-family: sans-serif;
+    transition: background-color 0.2s;
+}
+
+.confirm-btn-cancel {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.confirm-btn-cancel:hover {
+    background-color: #d0d0d0;
+}
+
+.confirm-btn-ok {
+    background-color: #d9534f;
+    color: #fff;
+}
+
+.confirm-btn-ok:hover {
+    background-color: #c9302c;
+}
+
+.file-drop-zone {
+    border: 2px dashed #a0a0a0;
+    padding: 20px;
+    text-align: center;
+    background: #f9f9f9;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.2s, border-color 0.2s;
+}
+.file-drop-zone.dragover {
+    background: #e1f5fe;
+    border-color: #0288d1;
+}
+.file-drop-zone mark {
+    background: none;
+    color: #0288d1;
+    text-decoration: underline;
+}
+.selected-files-list {
+    margin-top: 10px;
+}
+.file-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #eee;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    border-radius: 3px;
+    font-size: 14px;
+}
+.remove-file-btn {
+    background: none;
+    border: none;
+    color: #ff3333;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+}
