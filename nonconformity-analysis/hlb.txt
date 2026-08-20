@@ -1,0 +1,37 @@
+HLB - NonconformityAnalysis
+Название поля	Тип данных	Множ.
+UF_CONTROLS	Строка	нет
+UF_APPROVER_COMMENTS	Строка	да
+UF_FILES	Файл	да
+UF_APPROVERS	Строка	да
+UF_APPROVERS_ID	Привязка к сотруднику	да
+UF_ROUNDS_DATES	Дата	да
+UF_DATE_ACCEPTED	Дата	нет
+UF_FINAL_APPROVAL_DATE	Дата	нет
+UF_DEADLINE	Дата	нет
+UF_WORKER_COMMENT	Строка	нет
+UF_CURRENT_ROUND	Целое число	нет
+UF_STATUS	Список	нет (WAITING_WORKER Ожидает решения APPROVAL На согласовании REVISION На доработке APPROVED Согласован)
+UF_INITIATOR	Привязка к сотруднику	нет
+UF_SUPERVISOR_WORKER	Строка	нет
+UF_SUPERVISOR_WORKER_ID	Привязка к сотруднику	нет
+UF_WORKER	Строка	нет
+UF_WORKER_ID	Привязка к сотруднику	нет
+UF_SUPERVISOR_DEPARTMENT_WORKER	Строка	нет
+UF_DEPARTMENT_WORKER	Строка	нет
+UF_NAME_NONCONFORMITY	Строка	нет
+UF_DATE_REG	Дата	нет
+UF_DOC_NAME	Строка	нет
+
+HLB - ApprovalNonconformityAnalysis
+Название поля	Тип данных	Множ.
+UF_CONTROLS	Строка	нет
+UF_FILES_STRING	Строка	да
+UF_DEADLINE_APPROVER	Дата	нет
+UF_APPROVER_COMMENT	Строка	нет
+UF_WORKER_COMMENT	Строка	нет
+UF_DECISION_DATE	Дата	нет
+UF_STATUS	Список	нет (WAITING Ожидает решения APPROVED Согласовано REJECTED Отклонено)
+UF_APPROVER	Привязка к сотруднику	нет
+UF_ROUND	Целое число	нет
+UF_NONCONFORMITY_ID	Целое число	нет
